@@ -1,0 +1,68 @@
+{
+  
+    "countries.title": "Pays",    
+    "countries.toolbar.map": "Carte",
+    "countries.toolbar.grid": "Grille",
+    "countries.toolbar.table": "Tableau",
+  
+    "content.message.dataLoading": "Chargement des données...",
+    "content.message.dataFetchError": "Impossible de récupérer les données !",
+
+    "footer.info" : "2018 - <strong> Countries app </strong>",
+
+    "dialog.button.close": "Fermer",
+
+    "toolbar.label.back": "Retour",
+    "toolbar.label.search": "Rechercher",
+
+    "about.title": "A propos",
+    "about.text.countriesData": "Les données de l'app Pays proviennent de {0}.",
+
+    "settings.title": "Paramètres",
+    "settings.label.language": "Langue",
+    "settings.label.units": "Unités",
+    "settings.units.metric": "Métrique",
+    "settings.units.imperial": "Impérial",
+    "settings.label.theme": "Thème",
+    "settings.theme.light": "Clair",
+    "settings.theme.dark": "Sombre",
+
+    "country.label.name": "Nom",
+    "country.label.code": "Code",
+    "country.label.region": "Région",
+    "country.label.subregion": "Sous-région",
+    "country.label.capital": "Capitale",
+    "country.label.regionalBlocs": "Bloc régional | Blocs régionaux",
+    "country.label.population": "Population",
+    "country.label.area": "Superficie",
+    "country.label.languages": "Langue | Langues",
+    "country.label.currencies": "Monnaie | Monnaies",
+    "country.label.timezones": "Fuseau horaire | Fuseaux horaires",
+
+    "navigation.header": "Navigation",
+    "navigation.label.world": "Monde entier",
+
+    "filters.header": "Filtre",
+    "filters.placeholder.all": "Tous",
+    "filters.label.region": "Région",
+    "filters.label.subregion": "Sous-région",
+    "filters.label.regionalBloc": "Bloc régional",
+    "filters.label.languages": "Langues",
+  
+    "sorts.header": "Tri",
+    "sorts.dataType": "Type de donnée",
+    "sorts.dataType.name": "Nom",
+    "sorts.dataType.population": "Population",
+    "sorts.dataType.area": "Superficie",
+    "sorts.order": "Ordre",
+    "sorts.order.ascending": "Croissant",
+    "sorts.order.descending": "Décroissant",
+
+    "statistics.header": "Statistiques",
+    "statistics.text.countries": "pays | pays",
+    "statistics.subtext.worldCountries": "des pays du monde",
+    "statistics.text.people": "personnes",
+    "statistics.subtext.worldPopulation": "de la population mondiale",    
+    "statistics.subtext.worldArea": "de la superficie du monde"
+
+  }

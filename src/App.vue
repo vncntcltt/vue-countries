@@ -1,31 +1,91 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-app :dark="isDarkTheme">
+      <v-navigation-drawer
+        v-model="drawer"
+        app
+        clipped
+        fixed
+        >
+          <v-list v-if="regionData">
+
+            <CountryNavigation />
+
+            <v-divider />
+
+            <v-list-tile to="/settings">
+              <v-list-tile-action>
+                <v-icon>settings</v-icon>
+              </v-list-tile-action>
+
+              <v-list-tile-content>
+                <v-list-tile-title>{{ $t('settings.title') }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-divider />
+
+            <v-list-tile to="/about">
+              <v-list-tile-action>
+                <v-icon>help</v-icon>
+              </v-list-tile-action>
+
+              <v-list-tile-content>
+                <v-list-tile-title>{{ $t('about.title') }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+          </v-list>
+          <p v-else></p>
+      </v-navigation-drawer>
+
+      <main>
+        <router-view @toggle-drawer="drawer = !drawer"></router-view>
+      </main>
+
+      <v-footer app>
+        <v-layout justify-center>
+          <span v-html="$t('footer.info')"></span>
+        </v-layout>
+      </v-footer>
+    </v-app>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import { mapState, mapGetters } from 'vuex'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+import CountryNavigation from './components/CountryNavigation'
+import Countries from './views/Countries'
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+export default {
+  components: {
+    CountryNavigation,
+    Countries
+  },
+  data () {
+    return {
+      drawer: null
+    }
+  },
+  computed: {
+    ...mapState({
+      theme: state => state.settings.theme
+    }),
+    ...mapGetters({
+      regionData: 'countries/getRegionData',
+      isDarkTheme: 'settings/isDarkTheme'
+    }),
+    countryDisplayComponent () {
+      switch (this.countryDisplayType) {
+        case 'grid':
+          return 'CountryDataGrid'
+        case 'map':
+          return 'CountryMap'
+        case 'table':
+          return 'CountryDataTable'
+      }
+    }
+  }
 }
-</style>
+</script>

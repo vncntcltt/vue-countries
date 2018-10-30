@@ -1,0 +1,69 @@
+{
+  
+  "countries.title": "Countries",  
+  "countries.toolbar.map": "Map",
+  "countries.toolbar.grid": "Grid",
+  "countries.toolbar.table": "Table",
+  "countries.toolbar.info": "Info",
+
+  "content.message.dataLoading": "Loading data...",
+  "content.message.dataFetchError": "Could not fetch data !",
+
+  "footer.info" : "2018 - <strong> Countries app </strong>",
+
+  "dialog.button.close": "Close",  
+
+  "toolbar.label.back": "Back",
+  "toolbar.label.search": "Search",
+
+  "about.title": "About",
+  "about.text.countriesData": "Countries data comes from {0}",
+
+  "settings.title": "Settings",
+  "settings.label.language": "Language",
+  "settings.label.units": "Units",
+  "settings.units.metric": "Metric",
+  "settings.units.imperial": "Imperial",
+  "settings.label.theme": "Theme",
+  "settings.theme.light": "Light",
+  "settings.theme.dark": "Dark",
+
+  "country.label.name": "Name",
+  "country.label.code": "Code",
+  "country.label.region": "Region",
+  "country.label.subregion": "Subregion",
+  "country.label.capital": "Capital",
+  "country.label.regionalBlocs": "Regional bloc | Regional blocs",
+  "country.label.population": "Population",
+  "country.label.area": "Area",
+  "country.label.languages": "Language | Languages",
+  "country.label.currencies": "Currency | Currencies",
+  "country.label.timezones": "Timezone | Timezones",
+
+  "navigation.header": "Navigation",
+  "navigation.label.world": "World",
+
+  "filters.header": "Filter",
+  "filters.placeholder.all": "All",
+  "filters.label.region": "Region",
+  "filters.label.subregion": "Subregion",
+  "filters.label.regionalBloc": "Regional bloc",
+  "filters.label.languages": "Languages",
+
+  "sorts.header": "Sort",
+  "sorts.dataType": "Data type",
+  "sorts.dataType.name": "Name",
+  "sorts.dataType.population": "Population",
+  "sorts.dataType.area": "Area",
+  "sorts.order": "Order",
+  "sorts.order.ascending": "Ascending",
+  "sorts.order.descending": "Descending",
+
+  "statistics.header": "Statistics",
+  "statistics.text.countries": "country | countries",
+  "statistics.subtext.worldCountries": "of the world countries",
+  "statistics.text.people": "people",
+  "statistics.subtext.worldPopulation": "of the world population",    
+  "statistics.subtext.worldArea": "of the world area"
+
+}
