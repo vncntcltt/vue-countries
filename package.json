@@ -23,6 +23,7 @@
     "@vue/eslint-config-standard": "^3.0.5",
     "vue-cli-plugin-i18n": "^0.5.1",
     "vue-cli-plugin-vuetify": "^0.4.5",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "cache-loader": "1.2.2"
   }
 }
