@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Countries from '../views/Countries'
-import Settings from '../views/Settings'
-import About from '../views/About'
-
 Vue.use(Router)
 
 export default new Router({
@@ -17,23 +13,23 @@ export default new Router({
     },
     {
       path: '/countries',
-      component: Countries
+      component: () => import('@/views/Countries')
     },
     {
       path: '/countries/:region',
-      component: Countries
+      component: () => import('@/views/Countries')
     },
     {
       path: '/countries/:region/:subregion',
-      component: Countries
+      component: () => import('@/views/Countries')
     },
     {
       path: '/about',
-      component: About
+      component: () => import('@/views/About')
     },
     {
       path: '/settings',
-      component: Settings
+      component: () => import('@/views/Settings')
     }
   ]
 })
