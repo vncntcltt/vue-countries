@@ -17,21 +17,24 @@
     <v-content>
       <v-container>
         <v-tabs v-model="active">
-          <v-tab>App</v-tab>
-          <v-tab>Tech</v-tab>
-          <v-tab>Data</v-tab>
+          <v-tab>{{ $t('about.tab.app') }}</v-tab>
+          <v-tab>{{ $t('about.tab.tech') }}</v-tab>
+          <v-tab>{{ $t('about.tab.data') }}</v-tab>
           <v-tab-item>
             <v-card flat>
               <v-card-text>
-                <p>
-                  This app is a personal project to learn Vue.
-                </p>
-                <p>
-                  Countries data are fetched from a remote data source then displayed as map, grid or table and may be filtered/sorted.
-                </p>
-                <p>
-                  The app is localized in English and French (except for data).
-                </p>
+                  <p>
+                    <i18n path="about.app.part1">
+                      <a
+                        href="https://github.com/vncntcltt/vue-countries"
+                        target="_blank"
+                      >
+                        GitHub
+                      </a>
+                    </i18n>
+                  </p>
+                  <p> {{ $t('about.app.part2') }}</p>
+                  <p> {{ $t('about.app.part3') }}</p>
                 </v-card-text>
             </v-card>
           </v-tab-item>
@@ -41,11 +44,11 @@
                 <ul>
                   <li>Vue.js
                     <ul>
-                      <li>Vue CLI including Webpack, ESLint</li>
+                      <li>Vue CLI incl. Webpack, ESLint</li>
                       <li>Vuex</li>
                       <li>Vue Router</li>
                       <li>Vue I18n</li>
-                      <li>Vuetify with material icons</li>
+                      <li>Vuetify + material icons</li>
                     </ul>
                   </li>
                   <li>Leaflet</li>
@@ -56,7 +59,7 @@
           <v-tab-item>
             <v-card flat>
               <v-card-text>
-                <i18n path="about.text.countriesData">
+                <i18n path="about.data.countriesData">
                   <a
                     href="https://restcountries.eu/"
                     target="_blank"

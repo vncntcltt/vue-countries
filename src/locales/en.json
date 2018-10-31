@@ -1,6 +1,6 @@
 {
-  
-  "countries.title": "Countries",  
+
+  "countries.title": "Countries",
   "countries.toolbar.map": "Map",
   "countries.toolbar.grid": "Grid",
   "countries.toolbar.table": "Table",
@@ -11,13 +11,19 @@
 
   "footer.info" : "2018 - <strong> Countries app </strong>",
 
-  "dialog.button.close": "Close",  
+  "dialog.button.close": "Close",
 
   "toolbar.label.back": "Back",
   "toolbar.label.search": "Search",
 
   "about.title": "About",
-  "about.text.countriesData": "Countries data comes from {0}",
+  "about.tab.app": "App",
+  "about.tab.tech": "Tech",
+  "about.tab.data": "Data",
+  "about.app.part1": "This app is a personal open source project to learn Vue available on {0}.",
+  "about.app.part2": "Countries data are fetched from a remote data source then displayed as map, grid or table and may be filtered and sorted.",
+  "about.app.part3": "The app is localized in English and French (except for data) and is configurable: language, unit display and theme may be changed in settings.",
+  "about.data.countriesData": "Countries data comes from {0}.",
 
   "settings.title": "Settings",
   "settings.label.language": "Language",
@@ -63,7 +69,7 @@
   "statistics.text.countries": "country | countries",
   "statistics.subtext.worldCountries": "of the world countries",
   "statistics.text.people": "people",
-  "statistics.subtext.worldPopulation": "of the world population",    
+  "statistics.subtext.worldPopulation": "of the world population",
   "statistics.subtext.worldArea": "of the world area"
 
 }
