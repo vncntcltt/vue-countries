@@ -1,5 +1,9 @@
 # vue-countries
 
+This is a personal project to learn Vue.
+
+You can see the project in action at https://vncntcltt.github.io/vue-countries
+
 ## Project setup
 ```
 npm install
