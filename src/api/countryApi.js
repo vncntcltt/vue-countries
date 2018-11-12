@@ -1,11 +1,13 @@
+const COUNTRIES_API_URL = 'https://restcountries.eu/rest/v2/all'
 const ASC_ORDER = 'asc'
 const DATA_STR_FIELDS = ['name']
 const DATA_NUM_FIELDS = ['population', 'area']
 const DATA_LOCALE = 'en'
 
 export default {
+
   getCountries () {
-    return fetch('https://restcountries.eu/rest/v2/all')
+    return fetch(COUNTRIES_API_URL)
   },
 
   buildRegionData (countries) {
