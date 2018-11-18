@@ -11,13 +11,13 @@ export default {
   },
 
   buildRegionData (countries) {
-    const regions = []
-    const subregions = []
-    const subregionsByRegion = {}
-    const regionalBlocBySize = {}
-    let regionalBlocs = []
+    const regions: string[] = []
+    const subregions: string[] = []
+    const subregionsByRegion: {[key: string]: string[]} = {}
+    const regionalBlocBySize: {[key: string]: number} = {}
+    let regionalBlocs: string[] = []
     const languageBySize = {}
-    let languages = []
+    let languages: string[] = []
     for (let country of countries) {
       let { region, subregion } = country
       if (region && !regions.includes(region)) {

@@ -23,41 +23,45 @@
   </v-data-table>
 </template>
 
-<script>
-import UnitDisplay from './UnitDisplay'
+<script lang="ts">
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Prop } from 'vue-property-decorator'
 
-export default {
+import UnitDisplay from './UnitDisplay.vue'
+import { Country } from '@/interfaces'
+
+@Component({
   components: {
     UnitDisplay
-  },
-  props: {
-    countries: Array
-  },
-  data () {
-    return {
-      headers: [
-        { text: this.$t('country.label.name'), align: 'left', value: 'name' },
-        { text: this.$t('country.label.region'), value: 'region' },
-        { text: this.$t('country.label.subregion'), value: 'subregion' },
-        { text: this.$t('country.label.capital'), value: 'capital' },
-        {
-          text: this.$t('country.label.population'),
-          align: 'right',
-          value: 'population'
-        },
-        { text: this.$t('country.label.area'), align: 'right', value: 'area' }
-      ],
-      rowsPerPageItems: [
-        10,
-        15,
-        25,
-        50,
-        { text: '$vuetify.dataIterator.rowsPerPageAll', value: -1 }
-      ],
-      pagination: {
-        rowsPerPage: 15
-      }
-    }
+  }
+})
+export default class CountryDataTable extends Vue {
+  @Prop() countries!: Country[]
+
+  headers!: any
+
+  rowsPerPageItems = [
+    10,
+    15,
+    25,
+    50,
+    { text: '$vuetify.dataIterator.rowsPerPageAll', value: -1 }
+  ]
+
+  pagination = {
+    rowsPerPage: 15
+  }
+
+  created() {
+    this.headers = [
+      { text: this.$t('country.label.name'), align: 'left', value: 'name' },
+      { text: this.$t('country.label.region'), value: 'region' },
+      { text: this.$t('country.label.subregion'), value: 'subregion' },
+      { text: this.$t('country.label.capital'), value: 'capital' },
+      { text: this.$t('country.label.population'), align: 'right', value: 'population' },
+      { text: this.$t('country.label.area'), align: 'right', value: 'area' }
+    ]
   }
 }
 </script>

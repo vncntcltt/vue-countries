@@ -21,30 +21,37 @@
   </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      sortFields: [
-        { text: this.$t('sorts.dataType.name'), value: 'name' },
-        { text: this.$t('sorts.dataType.population'), value: 'population' },
-        { text: this.$t('sorts.dataType.area'), value: 'area' }
-      ],
-      sortOrders: [
-        { text: this.$t('sorts.order.ascending'), value: 'asc' },
-        { text: this.$t('sorts.order.descending'), value: 'desc' }
-      ],
-      selectedSortField: 'name',
-      selectedSortOrder: 'asc'
-    }
-  },
-  methods: {
-    sortCountries () {
-      this.$store.commit('countries/sort', {
-        field: this.selectedSortField,
-        order: this.selectedSortOrder
-      })
-    }
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+
+@Component
+export default class CountrySorts extends Vue {
+  sortFields!: any[]
+
+  sortOrders!: any[]
+
+  selectedSortField = 'name'
+
+  selectedSortOrder = 'asc'
+
+  created() {
+    this.sortFields = [
+      { text: this.$t('sorts.dataType.name'), value: 'name' },
+      { text: this.$t('sorts.dataType.population'), value: 'population' },
+      { text: this.$t('sorts.dataType.area'), value: 'area' }
+    ]
+    this.sortOrders = [
+      { text: this.$t('sorts.order.ascending'), value: 'asc' },
+      { text: this.$t('sorts.order.descending'), value: 'desc' }
+    ]
+  }
+
+  sortCountries () {
+    this.$store.commit('countries/sort', {
+      field: this.selectedSortField,
+      order: this.selectedSortOrder
+    })
   }
 }
 </script>

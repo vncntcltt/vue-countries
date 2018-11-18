@@ -52,40 +52,29 @@
   </div>
 </template>
 
-<script>
-import { mapState, mapGetters } from 'vuex'
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
 
-import CountryNavigation from './components/CountryNavigation'
-import Countries from './views/Countries'
+import Countries from './views/Countries.vue'
+import CountryNavigation from './components/CountryNavigation.vue'
+import { Getter, State } from 'vuex-class';
 
-export default {
+@Component({
   components: {
     CountryNavigation,
     Countries
-  },
-  data () {
-    return {
-      drawer: null
-    }
-  },
-  computed: {
-    ...mapState({
-      theme: state => state.settings.theme
-    }),
-    ...mapGetters({
-      regionData: 'countries/getRegionData',
-      isDarkTheme: 'settings/isDarkTheme'
-    }),
-    countryDisplayComponent () {
-      switch (this.countryDisplayType) {
-        case 'grid':
-          return 'CountryDataGrid'
-        case 'map':
-          return 'CountryMap'
-        case 'table':
-          return 'CountryDataTable'
-      }
-    }
   }
+})
+export default class App extends Vue {
+
+  drawer = null
+
+  @State(state => state.settings.theme) theme
+
+  @Getter('countries/getRegionData') regionData
+
+  @Getter('settings/isDarkTheme') isDarkTheme
+
 }
 </script>

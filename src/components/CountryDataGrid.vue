@@ -25,28 +25,30 @@
   </v-container>
 </template>
 
-<script>
-import CountryCard from './CountryCard'
+<script lang="ts">
+import Vue from 'vue'
+import { Component, Prop } from 'vue-property-decorator'
 
-export default {
+import CountryCard from './CountryCard.vue'
+import { Country } from '@/interfaces'
+
+@Component({
   components: {
     CountryCard
-  },
-  props: {
-    countries: Array
-  },
-  data () {
-    return {
-      rowsPerPageItems: [
-        4,
-        8,
-        16,
-        { text: '$vuetify.dataIterator.rowsPerPageAll', value: -1 }
-      ],
-      pagination: {
-        rowsPerPage: 8
-      }
-    }
+  }
+})
+export default class CountryDataGrid extends Vue {
+  @Prop() countries!: Country[]
+
+  rowsPerPageItems = [
+    4,
+    8,
+    16,
+    { text: '$vuetify.dataIterator.rowsPerPageAll', value: -1 }
+  ]
+
+  pagination = {
+    rowsPerPage: 8
   }
 }
 </script>

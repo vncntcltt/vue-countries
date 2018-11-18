@@ -30,42 +30,43 @@
   </div>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 
-export default {
-  data () {
-    return {
-      selectedRegionalBloc: '',
-      selectedLanguages: []
+@Component
+export default class CountryFilters extends Vue {
+
+  selectedRegionalBloc = ''
+
+  selectedLanguages = []
+
+  @Getter('countries/getRegionalBlocs') regionalBlocs
+
+  @Getter('countries/getLanguages') languages
+
+  get regionalBlocItems () {
+    return this.buildSelectItems(this.regionalBlocs)
+  }
+
+  get languageItems () {
+    return this.buildSelectItems(this.languages)
+  }
+
+  filterCountries () {
+    this.$store.commit('countries/filter', {
+      regionalBloc: this.selectedRegionalBloc,
+      languages: this.selectedLanguages
+    })
+  }
+
+  buildSelectItems (values: string[]) {
+    const items: {text: string, value: string}[] = []
+    for (let val of values) {
+      items.push({ text: val, value: val })
     }
-  },
-  computed: {
-    ...mapGetters({
-      regionalBlocs: 'countries/getRegionalBlocs',
-      languages: 'countries/getLanguages'
-    }),
-    regionalBlocItems () {
-      return this.buildSelectItems(this.regionalBlocs)
-    },
-    languageItems () {
-      return this.buildSelectItems(this.languages)
-    }
-  },
-  methods: {
-    filterCountries () {
-      this.$store.commit('countries/filter', {
-        regionalBloc: this.selectedRegionalBloc,
-        languages: this.selectedLanguages
-      })
-    },
-    buildSelectItems (values) {
-      const items = []
-      for (let val of values) {
-        items.push({ text: val, value: val })
-      }
-      return items
-    }
+    return items
   }
 }
 </script>

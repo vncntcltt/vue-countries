@@ -2,27 +2,26 @@
     <span>{{ valueAndUnit }}</span>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import Vue from 'vue'
+import { Component, Prop } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 
-export default {
-  props: {
-    val: Number
-  },
-  computed: {
-    ...mapGetters({
-      isImperialUnit: 'settings/isImperialUnit'
-    }),
-    valueAndUnit () {
-      let tval = this.val
-      if (this.isImperialUnit) {
-        tval = this.$n(tval)
-        return `${tval} sq mi`
-      } else {
-        tval = Math.round(2.59 * tval)
-        tval = this.$n(tval)
-        return `${tval} km²`
-      }
+@Component
+export default class UnitDisplay extends Vue {
+  @Prop() val!: number
+
+  @Getter('settings/isImperialUnit') isImperialUnit
+
+  get valueAndUnit () {
+    let tval = this.val
+    if (this.isImperialUnit) {
+      const nval = this.$n(tval)
+      return `${nval} sq mi`
+    } else {
+      tval = Math.round(2.59 * tval)
+      const nval = this.$n(tval)
+      return `${nval} km²`
     }
   }
 }

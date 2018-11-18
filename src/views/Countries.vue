@@ -98,60 +98,64 @@
   </div>
 </template>
 
-<script>
-import { mapState, mapGetters } from 'vuex'
-import CountryDataGrid from '../components/CountryDataGrid'
-import CountryMap from '../components/CountryMap'
-import CountryDataTable from '../components/CountryDataTable'
-import CountryCard from '../components/CountryCard'
-import CountryStatistics from '../components/CountryStatistics'
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+import { Getter, State } from 'vuex-class'
 
-export default {
+import CountryDataGrid from '../components/CountryDataGrid.vue'
+import CountryMap from '../components/CountryMap.vue'
+import CountryDataTable from '../components/CountryDataTable.vue'
+import CountryCard from '../components/CountryCard.vue'
+import CountryStatistics from '../components/CountryStatistics.vue'
+
+@Component({
   components: {
     CountryDataGrid,
     CountryMap,
     CountryDataTable,
     CountryCard,
     CountryStatistics
-  },
-  data () {
-    return {
-      selectedCountry: null,
-      searchText: null,
-      countryCardDialog: false,
-      showInfo: false
+  }
+})
+export default class Countries extends Vue {
+  selectedCountry = null
+
+  searchText = null
+
+  countryCardDialog = false
+
+  showInfo = false
+
+  @State(state => state.countries.allCountries) countries
+
+  @State(state => state.countries.error) error
+
+  @State(state => state.countries.displayType) countryDisplayType
+
+  @Getter('countries/getFilteredCountries') filteredCountries
+
+  get countryDisplayComponent () {
+    switch (this.countryDisplayType) {
+      case 'grid':
+        return 'CountryDataGrid'
+      case 'map':
+        return 'CountryMap'
+      case 'table':
+        return 'CountryDataTable'
     }
-  },
-  computed: {
-    ...mapState({
-      countries: state => state.countries.allCountries,
-      error: state => state.countries.error,
-      countryDisplayType: state => state.countries.displayType
-    }),
-    ...mapGetters({
-      filteredCountries: 'countries/getFilteredCountries'
-    }),
-    countryDisplayComponent () {
-      switch (this.countryDisplayType) {
-        case 'grid':
-          return 'CountryDataGrid'
-        case 'map':
-          return 'CountryMap'
-        case 'table':
-          return 'CountryDataTable'
-      }
-    }
-  },
+  }
+
   created () {
     this.$store.dispatch('countries/getCountries')
-  },
-  methods: {
-    searchCountries () {
-      this.$store.commit('countries/search', this.searchText)
-    },
-    setDisplayType (displayType) {
-      this.$store.commit('countries/setDisplayType', displayType)
-    }
+  }
+
+  searchCountries () {
+    this.$store.commit('countries/search', this.searchText)
+  }
+
+  setDisplayType (displayType) {
+    this.$store.commit('countries/setDisplayType', displayType)
   }
 }
 </script>

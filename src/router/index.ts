@@ -13,23 +13,23 @@ export default new Router({
     },
     {
       path: '/countries',
-      component: () => import('@/views/Countries')
+      component: () => import('@/views/Countries.vue')
     },
     {
       path: '/countries/:region',
-      component: () => import('@/views/Countries')
+      component: () => import('@/views/Countries.vue')
     },
     {
       path: '/countries/:region/:subregion',
-      component: () => import('@/views/Countries')
+      component: () => import('@/views/Countries.vue')
     },
     {
       path: '/about',
-      component: () => import('@/views/About')
+      component: () => import('@/views/About.vue')
     },
     {
       path: '/settings',
-      component: () => import('@/views/Settings')
+      component: () => import('@/views/Settings.vue')
     }
   ]
 })

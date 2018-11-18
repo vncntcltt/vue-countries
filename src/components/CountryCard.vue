@@ -121,39 +121,42 @@
   </v-card>
 </template>
 
-<script>
-import UnitDisplay from './UnitDisplay'
+<script lang="ts">
+import Vue from 'vue'
+import { Component, Prop } from 'vue-property-decorator'
 
-export default {
+import UnitDisplay from './UnitDisplay.vue'
+import { Country } from '@/interfaces'
+
+@Component({
   components: {
     UnitDisplay
   },
   filters: {
-    displayNAIfEmpty (value) {
+    displayNAIfEmpty (value: string) {
       if (!value) {
         return 'N/A'
       }
       return value
     }
-  },
-  props: {
-    country: Object
-  },
-  computed: {
-    countryRegionalBlocs () {
-      return this.country.regionalBlocs.map(r => r.name).join(', ')
-    },
-    countryLanguages () {
-      return this.country.languages.map(l => l.name).join(', ')
-    },
-    countryCurrencies () {
-      return this.country.currencies
-        .map(c => `${c.name} (${c.code})`)
-        .join(', ')
-    },
-    countryTimezones () {
-      return this.country.timezones.join(', ')
-    }
+  }
+})
+export default class CountryCard extends Vue {
+  @Prop() country!: Country
+
+  get countryRegionalBlocs () {
+    return this.country.regionalBlocs.map(r => r.name).join(', ')
+  }
+  get countryLanguages () {
+    return this.country.languages.map(l => l.name).join(', ')
+  }
+  get countryCurrencies () {
+    return this.country.currencies
+      .map(c => `${c.name} (${c.code})`)
+      .join(', ')
+  }
+  get countryTimezones () {
+    return this.country.timezones.join(', ')
   }
 }
 </script>

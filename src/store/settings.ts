@@ -1,6 +1,11 @@
 const DARK_THEME = 'dark'
 const IMPERIAL_UNIT = 'imperial'
 
+interface SettingsState {
+  unit: string
+  theme: string
+}
+
 export default {
   namespaced: true,
   state: {
@@ -8,18 +13,18 @@ export default {
     theme: 'light'
   },
   getters: {
-    isDarkTheme (state) {
+    isDarkTheme (state: SettingsState) {
       return state.theme === DARK_THEME
     },
-    isImperialUnit (state) {
+    isImperialUnit (state: SettingsState): boolean {
       return state.unit === IMPERIAL_UNIT
     }
   },
   mutations: {
-    setTheme (state, theme) {
+    setTheme (state: SettingsState, theme: string) {
       state.theme = theme
     },
-    setUnit (state, unit) {
+    setUnit (state: SettingsState, unit: string) {
       state.unit = unit
     }
   }

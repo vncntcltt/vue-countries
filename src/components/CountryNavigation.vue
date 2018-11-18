@@ -69,48 +69,47 @@
   </div>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
-import CountryFilters from './CountryFilters'
-import CountrySorts from './CountrySorts'
+<script lang="ts">
+import Vue from 'vue'
+import { Component, Watch } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 
-export default {
+import CountryFilters from './CountryFilters.vue'
+import CountrySorts from './CountrySorts.vue'
+
+@Component({
   components: {
     CountryFilters,
     CountrySorts
-  },
-  data () {
-    return {
-      regionItems: null
-    }
-  },
-  computed: {
-    ...mapGetters({
-      regionData: 'countries/getRegionData',
-      showSorts: 'countries/showSorts'
+  }
+})
+export default class CountryNavigation extends Vue {
+
+  regionItems = null
+
+  @Getter('countries/getRegionData') regionData
+
+  @Getter('countries/showSorts') showSorts
+
+  @Watch('regionData') onRegionDataChange () {
+    this.regionItems = this.buildRegionItems()
+  }
+
+  @Watch('$route') onRouteChange (to, from) {
+    this.$store.commit('countries/navigate', { region: to.params.region, subregion: to.params.subregion })
+  }
+
+  buildRegionItems () {
+    return this.regionData.regions.map(region => {
+      return {
+        name: region,
+        items: this.regionData.subregionsByRegion[region].map(subregion => {
+          return {
+            name: subregion
+          }
+        })
+      }
     })
-  },
-  watch: {
-    regionData () {
-      this.regionItems = this.buildRegionItems()
-    },
-    $route (to, from) {
-      this.$store.commit('countries/navigate', { region: to.params.region, subregion: to.params.subregion })
-    }
-  },
-  methods: {
-    buildRegionItems () {
-      return this.regionData.regions.map(region => {
-        return {
-          name: region,
-          items: this.regionData.subregionsByRegion[region].map(subregion => {
-            return {
-              name: subregion
-            }
-          })
-        }
-      })
-    }
   }
 }
 </script>

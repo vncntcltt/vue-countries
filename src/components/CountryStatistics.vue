@@ -19,30 +19,38 @@
   </div>
 </template>
 
-<script>
-import UnitDisplay from './UnitDisplay'
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 
-export default {
+import UnitDisplay from './UnitDisplay.vue'
+
+@Component({
   components: {
     UnitDisplay
   },
   filters: {
-    displayPct (value) {
+    displayPct (value: number) {
       if (Number.isInteger(value)) {
         return value + '%'
       } else {
         return value.toFixed(2) + '%'
       }
     }
-  },
-  computed: mapGetters('countries', [
-    'filteredCountryCount',
-    'countPct',
-    'filteredPopulationSum',
-    'populationPct',
-    'filteredAreaSum',
-    'areaPct'
-  ])
+  }
+})
+export default class CountryStatistics extends Vue {
+  @Getter('countries/filteredCountryCount') filteredCountryCount
+
+  @Getter('countries/countPct') countPct
+
+  @Getter('countries/filteredPopulationSum') filteredPopulationSum
+
+  @Getter('countries/populationPct') populationPct
+
+  @Getter('countries/filteredAreaSum') filteredAreaSum
+
+  @Getter('countries/areaPct') areaPct
 }
 </script>

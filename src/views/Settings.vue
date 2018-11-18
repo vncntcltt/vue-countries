@@ -39,48 +39,54 @@
   </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      units: [
-        { text: this.$t('settings.units.metric'), value: 'metric' },
-        { text: this.$t('settings.units.imperial'), value: 'imperial' }
-      ],
-      themes: [
-        { text: this.$t('settings.theme.light'), value: 'light' },
-        { text: this.$t('settings.theme.dark'), value: 'dark' }
-      ],
-      languages: [
-        { text: 'English', value: 'en' },
-        { text: 'Français', value: 'fr' }
-      ],
-      selectedLanguage: this.$i18n.locale
-    }
-  },
-  computed: {
-    unit: {
-      get () {
-        return this.$store.state.settings.unit
-      },
-      set (value) {
-        this.$store.commit('settings/setUnit', value)
-      }
-    },
-    theme: {
-      get () {
-        return this.$store.state.settings.theme
-      },
-      set (value) {
-        this.$store.commit('settings/setTheme', value)
-      }
-    }
-  },
-  methods: {
-    setLocale (lang) {
-      this.$i18n.locale = lang
-      this.$vuetify.lang.current = lang
-    }
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+
+@Component
+export default class Settings extends Vue {
+  units!: any[]
+
+  themes!: any[]
+
+  languages = [
+    { text: 'English', value: 'en' },
+    { text: 'Français', value: 'fr' }
+  ]
+
+  selectedLanguage!: string
+
+  get unit () {
+    return this.$store.state.settings.unit
+  }
+
+  set unit (value) {
+    this.$store.commit('settings/setUnit', value)
+  }
+
+  get theme () {
+    return this.$store.state.settings.theme
+  }
+
+  set theme (value) {
+    this.$store.commit('settings/setTheme', value)
+  }
+
+  created() {
+    this.units = [
+      { text: this.$t('settings.units.metric'), value: 'metric' },
+      { text: this.$t('settings.units.imperial'), value: 'imperial' }
+    ]
+    this.themes = [
+      { text: this.$t('settings.theme.light'), value: 'light' },
+      { text: this.$t('settings.theme.dark'), value: 'dark' }
+    ]
+    this.selectedLanguage = this.$i18n.locale
+  }
+
+  setLocale (lang) {
+    this.$i18n.locale = lang
+    this.$vuetify.lang.current = lang
   }
 }
 </script>

@@ -76,12 +76,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      active: 'tab-App'
-    }
-  }
+<script lang="ts">
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+
+@Component
+export default class About extends Vue {
+  active = 'tab-App'
 }
 </script>
