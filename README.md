@@ -1,8 +1,9 @@
 # vue-countries
 
 This is a personal project to learn Vue.
+This branch is a Typescript version of the regular JS master branch.
 
-You can see the project in action at https://vncntcltt.github.io/vue-countries
+You can see the project in action at https://vncntcltt.github.io/vue-countries (based on master)
 
 ## Project setup
 ```

@@ -52,6 +52,7 @@
                     </ul>
                   </li>
                   <li>Leaflet</li>
+                  <li>Typescript with vue-class-component and vuex-class</li>
                 </ul>
               </v-card-text>
             </v-card>
