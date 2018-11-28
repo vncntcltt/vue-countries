@@ -16,10 +16,10 @@ export default {
     valueAndUnit () {
       let tval = this.val
       if (this.isImperialUnit) {
+        tval = Math.round(tval / 2.59)
         tval = this.$n(tval)
         return `${tval} sq mi`
       } else {
-        tval = Math.round(2.59 * tval)
         tval = this.$n(tval)
         return `${tval} km²`
       }
