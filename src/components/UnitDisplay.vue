@@ -16,10 +16,10 @@ export default class UnitDisplay extends Vue {
   get valueAndUnit () {
     let tval = this.val
     if (this.isImperialUnit) {
+      tval = Math.round(tval / 2.59)
       const nval = this.$n(tval)
       return `${nval} sq mi`
     } else {
-      tval = Math.round(2.59 * tval)
       const nval = this.$n(tval)
       return `${nval} km²`
     }
