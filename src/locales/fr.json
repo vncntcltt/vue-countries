@@ -20,9 +20,9 @@
   "about.tab.app": "Application",
   "about.tab.tech": "Technologies",
   "about.tab.data": "Données",
-  "about.app.part1": "Cette application est un projet open source personnel pour aprrendre Vue, disponible sur {0}.",
+  "about.app.part1": "Cette application est un projet open source personnel pour apprendre Vue, disponible sur {0}.",
   "about.app.part2": "Les données des pays sont récupérées depuis une source distance puis affichées dans une carte, une grille ou un tableau et elles peuvent être filtrées ou triées.",
-  "about.app.part3": "L'application est localisée en Anglais et Français (sauf les données) et est confiurable : la langue, l'affichage des unités et le thème peuvent être modifiés dans les paramètres.",
+  "about.app.part3": "L'application est localisée en Anglais et Français (sauf les données) et est configurable : la langue, l'affichage des unités et le thème peuvent être modifiés dans les paramètres.",
   "about.data.countriesData": "Les données des pays proviennent de {0}.",
 
   "settings.title": "Paramètres",
