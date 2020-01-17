@@ -60,8 +60,7 @@ import Countries from './views/Countries'
 
 export default {
   components: {
-    CountryNavigation,
-    Countries
+    CountryNavigation
   },
   data () {
     return {
@@ -85,6 +84,7 @@ export default {
         case 'table':
           return 'CountryDataTable'
       }
+      return 'grid'
     }
   }
 }
