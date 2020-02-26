@@ -139,6 +139,8 @@ export default {
           return 'CountryMap'
         case 'table':
           return 'CountryDataTable'
+        default:
+          return null
       }
     }
   },

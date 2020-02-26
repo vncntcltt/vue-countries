@@ -74,18 +74,7 @@ export default {
     ...mapGetters({
       regionData: 'countries/getRegionData',
       isDarkTheme: 'settings/isDarkTheme'
-    }),
-    countryDisplayComponent () {
-      switch (this.countryDisplayType) {
-        case 'grid':
-          return 'CountryDataGrid'
-        case 'map':
-          return 'CountryMap'
-        case 'table':
-          return 'CountryDataTable'
-      }
-      return 'grid'
-    }
+    })
   }
 }
 </script>
