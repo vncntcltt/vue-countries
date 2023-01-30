@@ -6,7 +6,15 @@ You can see the project in action at https://vncntcltt.github.io/vue-countries
 
 ![ScreenShot](/screenshots/vue-countries.gif)
 
+## Prerequisites
+
+Install Node v12.
+
+> This project is not compatible with most recent versions of Node.
+
+
 ## Project setup
+
 ```
 npm install
 ```
@@ -20,7 +28,7 @@ npm run serve
 ```
 npm run build
 ```
-
+$$
 ### Run your tests
 ```
 npm run test
