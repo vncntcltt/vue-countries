@@ -1,4 +1,4 @@
-const COUNTRIES_API_URL = 'https://restcountries.eu/rest/v2/all'
+const COUNTRIES_API_URL = 'https://restcountries.com/v2/all'
 const ASC_ORDER = 'asc'
 const DATA_STR_FIELDS = ['name']
 const DATA_NUM_FIELDS = ['population', 'area']
